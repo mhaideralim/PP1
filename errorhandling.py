@@ -12,13 +12,16 @@ db = [
     {"id": 6, "gen": 6, "ram": 16, "rom": 250, "brand": "hp"}
 
 ]
-@app.get("/errorhandling/{id}")
+
+
+@app.get("/error-handling/{id}")
 def machine_by_id(id: int) -> dict:
     result = [data for data in db if data['id'] == id]
     if result:
         return result[0]
     else:
         raise HTTPException(status_code=404, detail=f"No machine with id={id}.")
+
 
 if __name__ == "__main__":
     uvicorn.run("errorhandling:app", reload=True)
