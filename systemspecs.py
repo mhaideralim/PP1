@@ -11,12 +11,14 @@ db = [
     {"id": 6, "gen": 6, "ram": 16, "rom": 250, "brand": "hp"}
 
 ]
+
+
 @app.get("/laptop")
-def data(brand: str|None= None, ram: int|None= None) -> list:
+def data(brand: str | None = None, ram: int | None = None) -> list:
     result = db
     if brand:
-        result = [data for data in result if data['brand'] == brand ]
+        result = [data for data in result if data['brand'] == brand]
     if ram:
-        result = [data for data in result if data['ram'] <= ram ]
+        result = [data for data in result if data['ram'] <= ram]
     else:
         return result
